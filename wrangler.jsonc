@@ -1,0 +1,8 @@
+{
+  "name": "bandishare",
+  "compatibility_date": "2026-07-02",
+  "workers_dev": true,
+  "assets": {
+    "directory": "."
+  }
+}
