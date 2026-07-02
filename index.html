@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bandishare Blog – Tin tức & chia sẻ game</title>
+  <meta name="description" content="Bandishare Blog là trang phụ chia sẻ tin tức game, cập nhật phiên bản, mẹo chơi và góc nhìn nhanh dành cho cộng đồng yêu game Android." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bandishare Blog – Tin tức & chia sẻ game" />
+  <meta property="og:description" content="Trang phụ dạng blog chia sẻ tin tức, mẹo chơi và cập nhật game mới từ Bandishare." />
+  <meta property="og:image" content="https://bandishare.to/wp-content/uploads/2025/12/Bandishare-removebg-preview.png" />
+  <link rel="icon" href="https://bandishare.to/wp-content/uploads/2025/09/cropped-Favicon_bandishare-removebg-preview-192x192.png" />
+
+  <style>
+    :root {
+      --primary: #1fcff5;
+      --secondary: #cb4ce7;
+      --dark: #0b1020;
+      --text: #182033;
+      --muted: #667085;
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --border: #e7edf5;
+      --radius: 22px;
+      --shadow: 0 18px 45px rgba(12, 18, 38, .08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .brand img {
+      width: 132px;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #344054;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(31, 207, 245, .28);
+    }
+
+    .hero {
+      padding: 70px 0 44px;
+      background:
+        radial-gradient(circle at top left, rgba(31, 207, 245, .25), transparent 32%),
+        radial-gradient(circle at top right, rgba(203, 76, 231, .18), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(31, 207, 245, .35);
+      border-radius: 999px;
+      background: rgba(31, 207, 245, .08);
+      color: #087795;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -.055em;
+      color: var(--dark);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 26px;
+    }
+
+    .hero-card {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -60px -40px auto auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(31, 207, 245, .45), transparent 68%);
+    }
+
+    .hero-card img {
+      border-radius: 22px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #111827;
+    }
+
+    .hero-card h2 {
+      margin: 18px 0 8px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .hero-card p {
+      color: #cbd5e1;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      color: var(--dark);
+      font-size: clamp(26px, 3vw, 38px);
+      letter-spacing: -.035em;
+      line-height: 1.15;
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .post {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(12, 18, 38, .045);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .post:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .post img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #dbeafe;
+    }
+
+    .post-body {
+      padding: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #087795;
+      background: rgba(31, 207, 245, .1);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .post h3 {
+      margin: 0 0 10px;
+      color: var(--dark);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .post p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #98a2b3;
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      padding-top: 13px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature img {
+      border-radius: 22px;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .feature h2 {
+      margin: 8px 0 12px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -.045em;
+      color: var(--dark);
+    }
+
+    .feature p { color: var(--muted); }
+
+    .topic-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .topic-list a {
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-weight: 700;
+      color: #344054;
+    }
+
+    .topic-list a:hover {
+      color: #fff;
+      background: var(--dark);
+      border-color: var(--dark);
+    }
+
+    .newsletter {
+      text-align: center;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(31, 207, 245, .45), transparent 30%),
+        linear-gradient(135deg, #111827, #060914);
+      border-radius: 32px;
+      padding: 44px 22px;
+      margin: 30px 0 56px;
+    }
+
+    .newsletter h2 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -.04em;
+    }
+
+    .newsletter p {
+      color: #cbd5e1;
+      margin: 0 auto 22px;
+      max-width: 620px;
+    }
+
+    footer {
+      padding: 30px 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .feature { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 42px; }
+      .nav { height: 68px; }
+      .brand img { width: 112px; }
+      .section-head { display: block; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Bandishare Blog",
+    "description": "Trang phụ chia sẻ tin tức game, mẹo chơi và cập nhật phiên bản từ Bandishare.",
+    "inLanguage": "vi-VN",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bandishare",
+      "url": "https://bandishare.to/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bandishare.to/wp-content/uploads/2025/12/Bandishare-removebg-preview.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="/" class="brand" aria-label="Bandishare Blog">
+        <img src="https://bandishare.to/wp-content/uploads/2025/12/Bandishare-removebg-preview.png" alt="Bandishare Blog" />
+        <span>Blog Game</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#tin-moi">Tin mới</a>
+        <a href="#cap-nhat">Cập nhật game</a>
+        <a href="#meo-choi">Mẹo chơi</a>
+        <a href="#chu-de">Chủ đề</a>
+      </nav>
+
+      <a class="btn" href="https://bandishare.to/" target="_blank" rel="noopener">Về site chính</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="label">Trang phụ chia sẻ tin tức game</span>
+          <h1>Góc tin game, cập nhật và mẹo chơi từ Bandishare</h1>
+          <p>Đây là trang blog phụ dùng để chia sẻ thông tin game, bản cập nhật, kinh nghiệm chơi và các xu hướng nổi bật. Nội dung tập trung vào bài viết tin tức, không xây dựng như một kho tải game giống website chính.</p>
+          <a class="btn" href="#tin-moi">Xem bài mới</a>
+        </div>
+
+        <article class="hero-card">
+          <img src="https://bandishare.to/wp-content/uploads/2026/06/minecraft-26-32-04-300x300.jpg" alt="Tin cập nhật game nổi bật" />
+          <h2>Minecraft và làn sóng cập nhật mới</h2>
+          <p>Theo dõi nhanh các bản update, điểm thay đổi đáng chú ý và những nội dung người chơi nên biết trước khi trải nghiệm.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="tin-moi">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Tin mới về game</h2>
+            <p>Các bài viết ngắn gọn, dễ đọc, phù hợp để chia sẻ lên mạng xã hội hoặc làm site vệ tinh nội dung.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="post">
+            <img src="https://bandishare.to/wp-content/uploads/2026/07/sweet-hamster-days-APK01-300x300.jpg" alt="Sweet Hamster Days APK" />
+            <div class="post-body">
+              <span class="tag">Game mô phỏng</span>
+              <h3>Sweet Hamster Days gây chú ý nhờ lối chơi chăm sóc thú cưng dễ thương</h3>
+              <p>Tựa game mang màu sắc nhẹ nhàng, phù hợp với người chơi thích nuôi thú ảo, trang trí không gian và mở khóa hoạt động hằng ngày.</p>
+              <div class="meta"><span>Bandishare Blog</span><span>3 phút đọc</span></div>
+            </div>
+          </article>
+
+          <article class="post">
+            <img src="https://bandishare.to/wp-content/uploads/2026/07/melon-sandbox-mod-apk-02-300x300.jpg" alt="Melon Sandbox" />
+            <div class="post-body">
+              <span class="tag">Sandbox</span>
+              <h3>Melon Sandbox tiếp tục hút người chơi nhờ khả năng sáng tạo tự do</h3>
+              <p>Không bị bó buộc bởi nhiệm vụ tuyến tính, game cho phép người chơi thử nghiệm vật thể, bối cảnh và tình huống theo cách riêng.</p>
+              <div class="meta"><span>Phân tích nhanh</span><span>4 phút đọc</span></div>
+            </div>
+          </article>
+
+          <article class="post">
+            <img src="https://bandishare.to/wp-content/uploads/2026/06/minecraft-26-31-08-300x300.jpg" alt="Minecraft update" />
+            <div class="post-body">
+              <span class="tag">Cập nhật</span>
+              <h3>Minecraft bản mới nên chú ý những thay đổi nào?</h3>
+              <p>Các bản vá nhỏ thường không thêm quá nhiều nội dung, nhưng lại ảnh hưởng trực tiếp đến độ ổn định khi chơi và khả năng kết nối.</p>
+              <div class="meta"><span>Cập nhật game</span><span>5 phút đọc</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cap-nhat">
+      <div class="container">
+        <div class="feature">
+          <img src="https://bandishare.to/wp-content/uploads/2026/06/images-3-300x300.jpg" alt="Kingdom Rush 5" />
+          <div>
+            <span class="label">Bài nổi bật</span>
+            <h2>Game chiến thuật vẫn là nhóm nội dung dễ kéo traffic</h2>
+            <p>Những tựa game như Kingdom Rush, Rush Royale hay các game thủ thành thường có vòng đời tìm kiếm dài. Trang phụ có thể khai thác theo hướng tin tức, mẹo chơi, phân tích đội hình, nhân vật và phiên bản cập nhật thay vì chỉ tập trung vào trang tải.</p>
+            <a class="btn" href="#chu-de">Xem nhóm chủ đề</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="meo-choi">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Mẹo chơi & hướng dẫn nhanh</h2>
+            <p>Nhóm bài hỗ trợ người chơi, giúp trang phụ có nội dung tự nhiên hơn và ít giống website gốc.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="post">
+            <div class="post-body">
+              <span class="tag">Mẹo chơi</span>
+              <h3>Cách chọn game phù hợp với máy Android cấu hình yếu</h3>
+              <p>Ưu tiên game có dung lượng vừa phải, đồ họa tối ưu tốt và không yêu cầu kết nối liên tục để tránh giật lag.</p>
+              <div class="meta"><span>Hướng dẫn</span><span>2 phút đọc</span></div>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post-body">
+              <span class="tag">Kinh nghiệm</span>
+              <h3>Vì sao game casual dễ giữ chân người chơi lâu dài?</h3>
+              <p>Nhịp chơi ngắn, phần thưởng liên tục và nhiệm vụ hằng ngày giúp game casual phù hợp với thói quen giải trí nhanh.</p>
+              <div class="meta"><span>Góc nhìn</span><span>3 phút đọc</span></div>
+            </div>
+          </article>
+
+          <article class="post">
+            <div class="post-body">
+              <span class="tag">Cập nhật</span>
+              <h3>Đọc changelog game thế nào để biết bản cập nhật có đáng chú ý?</h3>
+              <p>Hãy tập trung vào lỗi đã sửa, thay đổi hiệu năng, nội dung mới và các điều chỉnh cân bằng ảnh hưởng trực tiếp đến gameplay.</p>
+              <div class="meta"><span>Tips</span><span>3 phút đọc</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="chu-de">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Chủ đề nên triển khai</h2>
+            <p>Các cụm chủ đề giúp trang phụ nhìn giống blog tin tức, phù hợp làm vệ tinh nội dung cho website chính.</p>
+          </div>
+        </div>
+
+        <div class="topic-list">
+          <a href="#">Tin game Android</a>
+          <a href="#">Cập nhật Minecraft</a>
+          <a href="#">Game mô phỏng</a>
+          <a href="#">Game chiến thuật</a>
+          <a href="#">Game casual</a>
+          <a href="#">Mẹo chơi game</a>
+          <a href="#">Top game đáng chơi</a>
+          <a href="#">So sánh phiên bản</a>
+          <a href="#">Tin Roblox</a>
+          <a href="#">Game mới ra mắt</a>
+        </div>
+
+        <div class="newsletter">
+          <h2>Bandishare Blog</h2>
+          <p>Một trang phụ đơn giản để đăng tin tức, chia sẻ kinh nghiệm và điều hướng người dùng về website chính khi cần tìm bài chi tiết hơn.</p>
+          <a class="btn" href="https://bandishare.to/" target="_blank" rel="noopener">Truy cập Bandishare</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Bandishare Blog. Trang phụ chia sẻ tin tức game.</span>
+      <span>Không phải website tải APK chính thức.</span>
+    </div>
+  </footer>
+</body>
+</html>
