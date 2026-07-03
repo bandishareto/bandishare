@@ -1,20 +1,20 @@
-# Bandishare Discovery – GitHub Pages
+# Bandishare Satellite – GitHub Pages
 
-Bản giao diện đã được chỉnh lại theo hướng website khám phá game và ứng dụng Android độc lập hơn, nhưng vẫn giữ thương hiệu Bandishare và toàn bộ liên kết nội dung về `bandishare.to`.
+Bộ website đã có các trang vật lý sau:
 
-## Cấu trúc
-- `/` – Trang chủ
-- `/game/` – Kho game
-- `/ung-dung/` – Ứng dụng
-- `/game/minecraft-tieng-viet/` – Minecraft
-- `/game/roblox/` – Roblox
-- `/blog/` – Blog
+- `index.html`
+- `game/index.html`
+- `ung-dung/index.html`
+- `game/minecraft-tieng-viet/index.html`
+- `game/roblox/index.html`
+- `blog/index.html`
 
-## Điểm đã sửa
-- Bỏ slider gây tràn và lẹm card.
-- Lưới game responsive 3/2/1 cột.
-- Card ngang gọn, tiêu đề giới hạn hai dòng, nút không tràn.
-- Giao diện, hero, màu sắc và mô tả trang được viết lại khác site chính.
-- Các thẻ nội dung vẫn dẫn tới Bandishare.to.
+Ngoài ra có các đường dẫn tương thích `game.html`, `ung-dung.html`, `minecraft.html`, `roblox.html`, `blog.html`, `/minecraft/`, `/roblox/` và `/apps/`.
 
-Tải toàn bộ thư mục lên repository rồi bật GitHub Pages từ nhánh chính.
+## Cách tải lên
+
+Giải nén ZIP và tải **toàn bộ nội dung bên trong** lên gốc repository. Trong GitHub vào **Settings → Pages → Deploy from a branch**, chọn nhánh `main` và thư mục `/(root)`.
+
+Không tải riêng mỗi `index.html`. Các thư mục `assets`, `game`, `ung-dung`, `blog`, `minecraft`, `roblox` và `apps` phải được giữ nguyên.
+
+Menu đã sử dụng đường dẫn HTML tương đối, nên hoạt động cả tại `https://username.github.io/repository/` và khi gắn tên miền riêng.
